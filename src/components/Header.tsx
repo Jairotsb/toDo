@@ -11,14 +11,15 @@ export function Header() {
 
   function handleSetTheme() {
     setTheme(theme === 'light' ? 'dark' : 'light');
+    localStorage.setItem('themeStorage', theme); 
   }  
 
   return (
-    <div className={`body-content ${theme === 'light' ? 'theme-body-light' : 'theme-body-dark'}`}>
-      <header className={`header ${theme === 'light' ? 'light-theme' : 'dark-theme'}`}>
+    <div className={`body-content ${localStorage.getItem('themeStorage') === 'light' ? 'theme-body-light' : 'theme-body-dark'}`}>
+      <header className={`header ${localStorage.getItem('themeStorage') === 'light' ? 'light-theme' : 'dark-theme'}`}>
         <div className={theme === 'light' ? 'light-theme' : 'dark-theme'}>
           <img src="/logo.svg" alt="to.do" />
-          <button onClick={handleSetTheme} className="select-theme">{theme === 'light' ? <FiMoon className='light-icon'/> : <FiSun className='dark-icon'/>}</button>
+          <button onClick={handleSetTheme} className="select-theme">{localStorage.getItem('themeStorage') === 'light' ? <FiMoon className='light-icon'/> : <FiSun className='dark-icon'/>}</button>
         </div>
       </header>
 

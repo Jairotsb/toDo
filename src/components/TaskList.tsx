@@ -52,7 +52,7 @@ export function TaskList({th}: themeSettings) {
   }
 
   return (
-    <section className={`task-list container ${th === 'light' ? 'light-theme' : 'dark-theme'}`}>
+    <section className={`task-list container ${localStorage.getItem('themeStorage') === 'light' ? 'light-theme' : 'dark-theme'}`}>
       <header>
         <h2>Minhas tasks</h2>
 
