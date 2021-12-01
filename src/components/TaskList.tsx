@@ -14,6 +14,10 @@ interface themeSettings {
   th: string;
 }
 
+interface TaskStorage {
+  tasks: string;
+}
+
 export function TaskList({th}: themeSettings) {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [newTaskTitle, setNewTaskTitle] = useState('');
@@ -30,6 +34,8 @@ export function TaskList({th}: themeSettings) {
       title: newTaskTitle,
       isComplete: false,
     }])
+
+    localStorage.setItem('todo-tasks', JSON.stringify(tasks));
 
     setNewTaskTitle('');
 
@@ -50,6 +56,8 @@ export function TaskList({th}: themeSettings) {
     const filteredTasks = tasks.filter(task => task.id !== id);
     setTasks(filteredTasks);
   }
+
+  //const listTaks = JSON.parse(localStorage.getItem("todo-tasks"));
 
   return (
     <section className={`task-list container ${localStorage.getItem('themeStorage') === 'light' ? 'light-theme' : 'dark-theme'}`}>
@@ -86,7 +94,7 @@ export function TaskList({th}: themeSettings) {
                     />
                     <span className="checkmark"></span> 
                   </label>
-                  <p>{task.title}</p>
+                  <p onClick={() => handleToggleTaskCompletion(task.id)}>{task.title}</p>
                 </div>
 
                 <button type="button" data-testid="remove-task-button" onClick={() => handleRemoveTask(task.id)}>

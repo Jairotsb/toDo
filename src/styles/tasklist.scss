@@ -53,7 +53,7 @@ section.task-list {
 
   header {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
 
@@ -66,6 +66,7 @@ section.task-list {
       gap: 0.25rem;
       align-items: center;
       font-size: 16px;
+      margin-top: 20px;
 
       form {
         padding: 0;
@@ -74,6 +75,7 @@ section.task-list {
         flex-direction: row;
         input {
           margin-right: 10px;
+          margin-left: 20px;
           background: var(--background);
           border: 0;
           color: var(--text);
@@ -129,7 +131,9 @@ section.task-list {
           outline: 0;
 
           p {
-            font-size: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            user-select: none;
           }
 
           &.completed {
@@ -144,6 +148,7 @@ section.task-list {
             position: relative;
             padding-left: 14px;
             margin-bottom: 18px;
+            transition: all .4s;
 
             input {
               position: absolute;
@@ -154,6 +159,7 @@ section.task-list {
 
               &:checked {
                 & ~ .checkmark {
+                  transition: all .4s;
                   background-color: var(--blue);
                 }
 
@@ -193,7 +199,10 @@ section.task-list {
           border: 0;
 
           svg {
+            width: 30px; 
+            height: 30px;
             color: var(--red);
+            transition: all .3s;
           }
 
           &:hover {
