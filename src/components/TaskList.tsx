@@ -35,8 +35,6 @@ export function TaskList({th}: themeSettings) {
       isComplete: false,
     }])
 
-    localStorage.setItem('todo-tasks', JSON.stringify(tasks));
-
     setNewTaskTitle('');
 
   }
@@ -57,7 +55,7 @@ export function TaskList({th}: themeSettings) {
     setTasks(filteredTasks);
   }
 
-  //const listTaks = JSON.parse(localStorage.getItem("todo-tasks"));
+
 
   return (
     <section className={`task-list container ${localStorage.getItem('themeStorage') === 'light' ? 'light-theme' : 'dark-theme'}`}>
